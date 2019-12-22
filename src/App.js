@@ -1,25 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Layout from './components/layout';
+import UsersContainer from './container/users';
 
+import { Route, Switch } from 'react-router';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+     <Layout>
+       <Switch>
+         <Route exact path="/" children={ () => <div style={{textAlign: 'center', color: '#214796'}}><h2>Welcome to My Blogs</h2></div>}/>
+         <Route path="/users/:userId/posts" children={() => <div>POSTS</div>}/>
+         <Route path="/users/:userId" children={() => <div>USER DETAILS</div>}/>
+         <Route path="/users" component={UsersContainer}/>
+
+       </Switch>
+       
+     </Layout>
+   </div>
   );
 }
 
